@@ -1,18 +1,21 @@
 var express = require('express');
-
+const { logIn, addUser, deleteUser } = require('../controller/user');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  const users = [{
-    "id": 1,
-    "name": "John Doe"
-  },
-  {
-    "id": 2,
-    "name": "Jane Doe"
-  }];
-  res.send(users);
+router.get("/login/:deviceIMEI", (req, res) => {
+  logIn(req, res);
+})
+
+router.post("/", (req, res) => {
+  addUser(req, res);
+});
+
+router.patch("/:deviceIMEI/:id", (req, res) => {
+  addUser(req, res);
+});
+
+router.delete("/:deviceIMEI/:id", (req, res) => {
+  deleteUser(req, res);
 });
 
 module.exports = router;
