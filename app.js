@@ -11,8 +11,10 @@ const usersRouter = require('./routes/users');
 const contentRouter = require('./routes/content');
 require("dotenv").config(); //
 
+const static = path.join(__dirname, 'static')
 app.use(logger('dev'));
 app.use(cors());
+app.use(express.static(static));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
