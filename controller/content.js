@@ -1,15 +1,59 @@
+const path = require("path");
+const { admin } = require("../firebase-admin");
 const { Content } = require("../model/Content");
+const Busboy = require("busboy");
+const audioBucket = admin.storage().bucket("Languages");
 
 const addContent = (req, res) => {
-    Content.create(req.body, (err, content) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send("System error in server")
+    const content = {};
+    let lang, age, destination;
+    const busboy = new Busboy({ headers: req.headers });
+    busboy.on('field', (fieldname, val) => {
+        if (fieldname === "lang") {
+            lang = val
         }
-        if (content) {
-            return res.status(200).send(content);
+        if (fieldname === "age") {
+            age = val
         }
-    })
+        content[fieldname] = val;
+    });
+
+    busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
+        switch (body.lang) {
+            case "amh":
+                destination = `/Amharic/${age}/${filename}`;
+                break;
+            case "he":
+                destination = `/En/${age}/${filename}`;
+                break;
+            case "en":
+                destination = `/He/${age}/${filename}`;
+                break;
+            default:
+                break;
+        }
+        audioBucket.upload(file, {
+            destination: destination
+        })
+        // file.pipe(fs.createWriteStream(saveTo)); 
+        // images.push(filePath);
+    });
+
+    busboy.on("finish", () => {
+        content.audio = destination;
+        Content.create(body, (err, content) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send("System error in server")
+            }
+            if (content) {
+                return res.status(200).send(content);
+            }
+        })
+    });
+
+    busboy.end(req.rawBody);
+
 }
 
 const getContents = (req, res) => {
