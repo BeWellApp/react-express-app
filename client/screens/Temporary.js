@@ -10,7 +10,7 @@ export default function Temporary({ navigation }) {
             <Button title="Go to SelectAge" onPress={() => navigation.navigate('SelectAge')} />
             <Button title="Go to MainMenu" onPress={() => navigation.navigate('MainMenu')} />
             <Button title="Go to BodyInfo" onPress={() => navigation.navigate('BodyInfo')} />
-            <Button title="Go to ConversionMenu" onPress={() => navigation.navigate('ConversionMenu')} />
+            <Button title="Go to ConversationMenu" onPress={() => navigation.navigate('ConversationMenu')} />
             <Button title="Go to ProtectYourself" onPress={() => navigation.navigate('ProtectYourself')} />
         </View>
     )
