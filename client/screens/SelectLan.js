@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function Home() {
+export default function SelectLan() {
     return (
         <View>
-            <Text>Home</Text>
+            <Text>SelectLan</Text>
         </View>
     )
 }
