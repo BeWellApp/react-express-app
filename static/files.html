@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>files test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <audio controls>
+            <source src="">
+        </audio>
+    </div>
+
+    <script>
+        const audio = document.querySelector("audio");
+        axios.get("/api/content/5fc54dfeba09c112a0f6361f")
+            .then(res => {
+                if (res.status === 200) {
+                    audio.src = res.data.audio;
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+    </script>
+</body>
+
+</html>
