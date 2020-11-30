@@ -4,6 +4,11 @@ const { Schema } = mongoose;
 const contentSchema = new Schema({
     title: { type: String, required: true },
     category: { type: String, required: true },
+    lang: {
+        type: String,
+        enum: ["he", "en", "am"],
+        required: true
+    },
     forAge: {
         type: [String],
         required: true,
