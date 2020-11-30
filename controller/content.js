@@ -13,7 +13,6 @@ const addContent = (req, res) => {
 }
 
 const getContents = (req, res) => {
-    //! content?age="15-23"&category="talking" 
     const { forAge, lang, category } = req.query;
     Content.find({ forAge, lang, category }, (err, contents) => {
         if (err) {
@@ -26,7 +25,14 @@ const getContents = (req, res) => {
 }
 
 const getSingleContent = (req, res) => {
-
+    Content.findById({ _id: req.params }, (err, content) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send("error in server")
+        }
+        // if (content)
+        return res.status(200).send(content);
+    })
 }
 
 const updateContent = (req, res) => {
