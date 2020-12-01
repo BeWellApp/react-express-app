@@ -1,5 +1,7 @@
+import BackButton from '../components/BackButton';
+import NextButton from '../components/NextButton';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import PlayButton from '../components/PlayButton';
 import AmharicRecording from '../assets/sounds/amharic_recording.mp3';
 import ArabicRecording from '../assets/sounds/arabic_recording.mp3';
@@ -48,18 +50,18 @@ export default function SelectLan({ navigation }) {
                 </View><View style={{
                     flex: 1
                 }}>
-                    <Button title='>' onPress={() => { navigation.navigate("Splash") }}
-                        style={{
-                            backgroundColor: "#FE434C",
-                            borderColor: "transparent",
-                            borderRadius: 20,
-                            width: 250
-                        }}
-                        textStyle={{ color: "#FFFFFF", fontSize: 100, fontWeight: '400' }} />
+
 
                 </View>
             </View>
+<<<<<<< HEAD
+            <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
+<<<<<<< HEAD
 
+=======
+>>>>>>> a725aa5fc01bd23c419ba34bee2054ce494f334b
+=======
+>>>>>>> bf39287a9e931145136956e4fde2d1ceb5286901
         </View>
     )
 }

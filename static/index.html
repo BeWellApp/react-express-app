@@ -9,14 +9,17 @@
 
 <body>
     <h1>Add Content</h1>
-    <form action="/api/content" method="POST">
+    <form action="/api/content" method="POST" enctype="multipart/form-data">
         <label for="">lang</label>
-        <input type="text" name="lang"/>
+        <input type="text" name="lang" />
         <label for="">age</label>
-        <input type="text" name="age"/>
+        <input type="text" name="age" />
+        <label for="">category</label>
+        <input type="text" name="category" />
         <label for="">audio</label>
-        <input type="file" name="file"/>
+        <input type="file" name="audio" />
         <button type="submit">upload</button>
     </form>
 </body>
+
 </html>

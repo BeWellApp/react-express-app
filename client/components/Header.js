@@ -5,20 +5,25 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Header() {
     return (
         <View style={styles.header}>
-            <Text style={styles.title}>תהיי בריאה Logo</Text>
+            <View>
+                <Text style={styles.headerText}>תהיי בריאה Logo</Text>
+            </View>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     header: {
-        height: 60,
+        width: '100%',
+        height: '100%',
         paddingTop: 30,
-        backgroundColor: '#E6E6FA'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     title: {
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
         color: '#000',
     }
