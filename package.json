@@ -10,7 +10,6 @@
     "all": "concurrently --kill-others-on-fail \"npm run client\" \"npm start\""
   },
   "dependencies": {
-    "@react-navigation/drawer": "^5.11.4",
     "bcryptjs": "^2.4.3",
     "busboy": "^0.3.1",
     "concurrently": "^5.2.0",

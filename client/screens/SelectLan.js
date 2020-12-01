@@ -56,7 +56,6 @@ export default function SelectLan({ navigation }) {
                 </View>
             </View>
             <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
-
         </View>
     )
 }
