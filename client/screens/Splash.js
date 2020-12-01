@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text,ImageBackground,Image,StyleSheet  } from 'react-native';
-import { color } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
