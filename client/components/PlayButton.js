@@ -8,7 +8,7 @@ export default function PlayButton({ audio = sample }) {
     
     const soundObject = useMemo(() => {
         const as = new Audio.Sound();
-
+        Audio.setAudioModeAsync({playsInSilentModeIOS:true});
         as.setOnPlaybackStatusUpdate(async playbackStatus => {
             if (playbackStatus.didJustFinish) {
                 setIsPlaying(false);
