@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: "flex-start",
         width: "80%",
-        height: 220,
+        height: 205,
         marginBottom: 20,
         borderRadius: 10,
         padding: 20,
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff"
     },
     image: {
-        // position:"absolute",
         width: 70,
         height: 100,
         alignSelf: "flex-end"
