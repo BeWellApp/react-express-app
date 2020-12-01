@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-import React from 'react';
-import { View, Text,Button} from 'react-native';
+
 import BackButton from '../components/BackButton';
 import NextButton from '../components/NextButton';
-=======
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import PlayButton from '../components/PlayButton';
@@ -13,7 +10,6 @@ import EnglishRecording from '../assets/sounds/english_recording.mp3';
 import HebrewRecording from '../assets/sounds/hebrew_recording.mp3';
 import RussianRecording from '../assets/sounds/russian_recording.mp3';
 import TigreniaRecording from '../assets/sounds/tigrenia_recording.mp3';
->>>>>>> 49a0b173f3be524b2f2f35a653cf76247c981925
 
 export default function SelectLan({ navigation }) {
     const [boolState, setState] = useState(true);
@@ -59,10 +55,7 @@ export default function SelectLan({ navigation }) {
 
                 </View>
             </View>
-<<<<<<< HEAD
             <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
-=======
->>>>>>> 49a0b173f3be524b2f2f35a653cf76247c981925
 
         </View>
     )
