@@ -44,3 +44,5 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
+
+export default registerRootComponent(App);

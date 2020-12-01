@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> a725aa5fc01bd23c419ba34bee2054ce494f334b
 import BackButton from '../components/BackButton';
 import NextButton from '../components/NextButton';
 import React, { useState } from 'react';
@@ -50,19 +54,15 @@ export default function SelectLan({ navigation }) {
                 </View><View style={{
                     flex: 1
                 }}>
-                    <Button title='>' onPress={() => { navigation.navigate("Splash") }}
-                        style={{
-                            backgroundColor: "#FE434C",
-                            borderColor: "transparent",
-                            borderRadius: 20,
-                            width: 250
-                        }}
-                        textStyle={{ color: "#FFFFFF", fontSize: 100, fontWeight: '400' }} />
+
 
                 </View>
             </View>
             <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
+<<<<<<< HEAD
 
+=======
+>>>>>>> a725aa5fc01bd23c419ba34bee2054ce494f334b
         </View>
     )
 }

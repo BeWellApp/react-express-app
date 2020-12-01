@@ -6,6 +6,7 @@ const { format } = require('util');
 const addContent = (req, res) => {
     const body = req.body;
     const file = req.file;
+    console.log(body);
     let destination = '';
     fileName = Date.now() + "-" + file.originalname;
     switch (body.lang) {

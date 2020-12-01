@@ -6,7 +6,7 @@ import Until23 from '../assets/sounds/15-23.mp3';
 import Until40 from '../assets/sounds/24-40.mp3';
 import Until65 from '../assets/sounds/41-65.mp3';
 
-export default function SelectAge() {
+export default function SelectAge({navigation}) {
     const [boolState, setState] = useState(true);
 
     const clickHandler = () => {
