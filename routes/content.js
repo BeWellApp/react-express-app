@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { addContent, getContents, getSingleContent, deleteContent } = require('../controller/content');
 const Multer = require("multer");
+
 const multer = Multer({
         storage: Multer.memoryStorage(),
         limits: {

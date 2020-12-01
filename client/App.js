@@ -11,17 +11,18 @@ import SelectLan from './screens/SelectLan';
 import Splash from './screens/Splash';
 import Welcome from './screens/Welcome';
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
+import { registerRootComponent } from 'expo'; 
 
 const Stack = createStackNavigator();
 
-export default function App() {
+function App() {
   return (
     <PaperProvider theme={{ ...DefaultTheme, dark: false }}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Temporary" component={Temporary} />
           <Stack.Screen name="BodyInfo" component={BodyInfo} />
-          <Stack.Screen name="ConversationMenu" component={ConversationMenu} />
+          <Stack.Screen name="איך לדבר על זה?" component={ConversationMenu} />
           <Stack.Screen name="MainMenu" component={MainMenu} />
           <Stack.Screen name="ProtectYourself" component={ProtectYourself} />
           <Stack.Screen name="SelectAge" component={SelectAge} />
@@ -33,4 +34,6 @@ export default function App() {
     </PaperProvider>
   );
 }
+
+export default registerRootComponent(App);
 

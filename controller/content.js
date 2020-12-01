@@ -75,10 +75,8 @@ const uploadImageToStorage = (file, destination) => {
         if (!file) {
             reject('No image file');
         }
-        let newFileName = `${Date.now()}_${file.originalname}`;
-        let fileUpload = bucket.file(newFileName);
+        let fileUpload = bucket.file(destination);
         const blobStream = fileUpload.createWriteStream({
-            destination: destination,
             metadata: {
                 contentType: file.mimetype
             }
