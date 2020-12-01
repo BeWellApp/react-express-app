@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> a725aa5fc01bd23c419ba34bee2054ce494f334b
 import BackButton from '../components/BackButton';
 import NextButton from '../components/NextButton';
 import React, { useState } from 'react';
