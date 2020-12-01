@@ -11,11 +11,13 @@ import SelectLan from './screens/SelectLan';
 import Splash from './screens/Splash';
 import Welcome from './screens/Welcome';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
+import { registerRootComponent } from 'expo'; 
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="close">

@@ -1,71 +1,42 @@
-const path = require("path"),
-    os = require("os");
 const { admin } = require("../firebase-admin");
 const { Content } = require("../model/Content");
-const Busboy = require("busboy");
-const audioBucket = admin.storage().bucket("Languages");
+const bucket = admin.storage().bucket("gs://bewell-8229a.appspot.com");
+const { format } = require('util');
 
 const addContent = (req, res) => {
-    const content = {};
-    let lang, age, destination, fileName;
-    const busboy = new Busboy({ headers: req.headers });
-    busboy.on('field', (fieldname, val) => {
-        if (fieldname === "lang") {
-            lang = val
-        }
-        if (fieldname === "age") {
-            age = val
-        }
-        content[fieldname] = val;
-    });
+    const body = req.body;
+    const file = req.file;
+    let destination = '';
+    fileName = Date.now() + "-" + file.originalname;
+    switch (body.lang) {
+        case "am":
+            destination = `Languege/Amharic/${body.age}/${fileName}`;
+            break;
+        case "he":
+            destination = `Languege/En/${body.age}/${fileName}`;
+            break;
+        case "en":
+            destination = `Languege/He/${body.age}/${fileName}`;
+            break;
+        default:
+            break;
+    }
 
-    busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
-        console.log("file");
-        fileName = Date.now() + "-" + filename
-        switch (lang) {
-            case "amh":
-                destination = `/Amharic/${age}/${fileName}`;
-                break;
-            case "he":
-                destination = `/En/${age}/${fileName}`;
-                break;
-            case "en":
-                destination = `/He/${age}/${fileName}`;
-                break;
-            default:
-                break;
-        }
-        // os.tmpdir(
-        const saveTo = path.join(__dirname, os.tmpdir(), fileName);
-        console.log(saveTo);
-        // )
-        const fileUpload = audioBucket.file(saveTo)
-        const fileStream = fileUpload.createWriteStream(
-            {
-                destination: destination
-            }
-        )
-        fileStream.on("finish", (res) => {
-            console.log(res);
-        })
-        // file.pipe(fs.createWriteStream(saveTo)); 
-        // images.push(filePath);
-    });
-
-    busboy.on("finish", () => {
-        // content.audio = fileName;
-        // Content.create(content, (err, content) => {
-        //     if (err) {
-        //         console.log(err);
-        //         res.status(500).send("System error in server")
-        //     }
-        //     if (content) {
-        //         return res.status(200).send(content);
-        //     }
-        // })
-        res.send(content)
-    });
-    req.pipe(busboy);
+    if (file) {
+        console.log(destination);
+        uploadImageToStorage(file, destination).then((success) => {
+            body.audio = success;
+            Content.create(body, (err, content) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                return res.status(201).send(content);
+            })
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
 }
 
 const getContents = (req, res) => {
@@ -75,7 +46,6 @@ const getContents = (req, res) => {
             console.log(err);
             return res.status(500).send("error in server")
         }
-
         return res.status(200).send(contents);
     });
 }
@@ -87,9 +57,8 @@ const getSingleContent = (req, res) => {
             console.log(err);
             return res.status(500).send("error in server")
         }
-        // if (content)
         return res.status(200).send(content);
-    })
+    });
 }
 
 const updateContent = (req, res) => {
@@ -98,6 +67,33 @@ const updateContent = (req, res) => {
 
 const deleteContent = (req, res) => {
 
+}
+
+
+const uploadImageToStorage = (file, destination) => {
+    return new Promise((resolve, reject) => {
+        if (!file) {
+            reject('No image file');
+        }
+        let fileUpload = bucket.file(destination);
+        const blobStream = fileUpload.createWriteStream({
+            metadata: {
+                contentType: file.mimetype
+            }
+        });
+
+        blobStream.on('error', (error) => {
+            reject('Something is wrong! Unable to upload at the moment.');
+        });
+
+        blobStream.on('finish', () => {
+            // The public URL can be used to directly access the file via HTTP.
+            const url = format(`https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`);
+            resolve(url);
+        });
+
+        blobStream.end(file.buffer);
+    });
 }
 
 module.exports = {
