@@ -24,7 +24,7 @@ app.use('/api/content', contentRouter);
 app.use('/api/users', usersRouter);
 
 //*Connect to mongodb
-const mongoUrl = "mongodb://localhost:27017/beWell";
+const mongoUrl = process.env.SB_URL || "mongodb://localhost:27017/beWell";
 
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true, useUnifiedTopology: true
