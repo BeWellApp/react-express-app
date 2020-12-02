@@ -6,6 +6,7 @@ import pillsAudio from '../assets/sounds/pills.mp3';
 import condomsAudio from '../assets/sounds/condoms.mp3';
 import condomImg from '../assets/condom.png';
 import pillsImg from '../assets/pills.png';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ProtectYourself() {
     const data = [
@@ -21,10 +22,10 @@ export default function ProtectYourself() {
         }
     ]
     return (
-        <View style={styles.mainContainer}>
+        <SafeAreaView style={styles.mainContainer}>
             <Text style={styles.title}>אמצעי מניעה</Text>
             {data.map((item, index) => <MenuCardSimple key={index} title={item.title} imageSource={item.imageSource} audio={item.audio} />)}
-        </View>
+        </SafeAreaView>
     )
 }
 
