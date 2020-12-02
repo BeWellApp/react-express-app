@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
-import {getUser} from '../apis/server/user';
+import { getUser } from '../apis/server/user';
 const styles = StyleSheet.create({
     logoContainer: {
         flex: 1,
@@ -16,16 +16,20 @@ const styles = StyleSheet.create({
     }
 });
 export default function Splash({ navigation }) {
-    let nextPage = 'MainMenu';
+    let nextPage = 'SelectLan';
     setTimeout(() => {
         navigation.navigate(nextPage)
     }, 2000);
 
     useEffect(() => {
         (async () => {
-            const user = await getUser(Constants.installationId);
-            if(user === "user not found") {
-                nextPage = 'SelectLan';
+            try {
+                const user = await getUser(Constants.installationId);
+                if (user === "user not found") {
+                    nextPage = 'SelectLan';
+                }
+            } catch (error) {
+                console.log(error);
             }
         })();
     }, []);
