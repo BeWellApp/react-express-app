@@ -4,10 +4,10 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "client": "cd client && npm start",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "all": "concurrently --kill-others-on-fail \"npm run client\" \"npm start\""
+    "heroku-postbuild": "npm install",
+    "all": "concurrently \"npm run client\" \"npm start\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
