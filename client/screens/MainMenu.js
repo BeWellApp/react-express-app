@@ -4,37 +4,36 @@ import MenuCardSimple from '../components/MenuCardSimple';
 import frontBodyWoman from '../assets/frontbodywoman.png';
 import drandPatient from '../assets/drand_patient.png';
 import couple from '../assets/couple.png';
+import body from '../assets/sounds/body.mp3';
+import talkto from '../assets/sounds/talkto.mp3';
+import preservative from '../assets/sounds/preservative.mp3';
 
 export default function MainMenu() {
     const data = [
         {
             title: 'מידע על גופך',
             imageSource: frontBodyWoman,
-            // audio: motherDaughterAudio
+            audio: body
         },
         {
-            title: 'איך לדבר על זה?',
+            title: 'עם מי כדאי לך להתייעץ?',
             imageSource: couple,
-            // audio: communicationAudio
+            audio: talkto
         },
         {
             title: 'איך תשמרי על עצמך?',
             imageSource: drandPatient,
-            // audio: seeDoctorAudio
+            audio: preservative
         }
     ]
     return (
         <View style={styles.mainContainer}>
-            {data.map((item, index) => <MenuCardSimple key={index} title={item.title} imageSource={item.imageSource} /* audio={item.audio}  *//>)}
+            {data.map((item, index) => <MenuCardSimple key={index} title={item.title} imageSource={item.imageSource} audio={item.audio} />)}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-
-    // imageContainer: {
-    //     width:
-    // },
     mainContainer: {
         flex: 1,
         alignItems: 'center',
