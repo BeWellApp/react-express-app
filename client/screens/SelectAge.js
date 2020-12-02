@@ -60,7 +60,9 @@ export default function SelectAge({navigation}) {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        alignItems:'center'
+        alignItems:'center',
+        justifyContent:'center',
+        flex:1
     },
     boldText: {
         fontWeight: 'bold',

@@ -32,15 +32,15 @@ function App() {
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Temporary" component={Temporary} />
-      <Stack.Screen name="BodyInfo" component={BodyInfo} />
-      <Stack.Screen name="ConversationMenu" component={ConversationMenu} />
-      <Stack.Screen name="MainMenu" component={MainMenu} />
-      <Stack.Screen name="ProtectYourself" component={ProtectYourself} />
-      <Stack.Screen name="SelectAge" component={SelectAge} />
-      <Stack.Screen name="SelectLan" component={SelectLan} />
+      {/* <Stack.Screen name="Temporary" component={Temporary} /> */}
       <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
-      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="BodyInfo" component={BodyInfo} options={{headerShown:false}}/>
+      <Stack.Screen name="ConversationMenu" component={ConversationMenu} options={{headerShown:false}}/>
+      <Stack.Screen name="MainMenu" component={MainMenu} options={{headerShown:false}}/>
+      <Stack.Screen name="ProtectYourself" component={ProtectYourself} options={{headerShown:false}}/>
+      <Stack.Screen name="SelectAge" component={SelectAge} options={{headerShown:false}}/>
+      <Stack.Screen name="SelectLan" component={SelectLan} options={{headerShown:false}}/>
+      <Stack.Screen name="Welcome" component={Welcome} options={{headerShown:false}}/>
     </Stack.Navigator>
   );
 }

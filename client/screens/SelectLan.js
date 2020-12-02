@@ -9,6 +9,7 @@ import EnglishRecording from '../assets/sounds/english_recording.mp3';
 import HebrewRecording from '../assets/sounds/hebrew_recording.mp3';
 import RussianRecording from '../assets/sounds/russian_recording.mp3';
 import TigreniaRecording from '../assets/sounds/tigrenia_recording.mp3';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SelectLan({ navigation }) {
     const [boolState, setState] = useState(true);
@@ -19,7 +20,7 @@ export default function SelectLan({ navigation }) {
 
     return (
 
-        <View style={styles.mainContainer}>
+        <SafeAreaView style={styles.mainContainer}>
             <Text style={styles.boldText}> באיזו שפה תרצי לקבל מידע ?</Text>
             <View style={styles.buttonContainer}>
                 <View style={styles.rowContainer}><PlayButton audio={HebrewRecording} /><View style={styles.button}><Button  title='עברית' onPress={clickHandler} /></View></View>
@@ -49,13 +50,15 @@ export default function SelectLan({ navigation }) {
                 }}>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     mainContainer: {
-        alignItems:'center'
+        alignItems:'center',
+        justifyContent:'center',
+        flex:1
     },
     boldText: {
         fontWeight: 'bold',

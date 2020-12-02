@@ -8,6 +8,7 @@ import seeDoctorAudio from '../assets/sounds/seeadoctor.mp3';
 import couple from '../assets/couple.png';
 import drandPatient from '../assets/drand_patient.png';
 import womanAndDaughter from '../assets/woman_and_daughter.png';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ConversationMenu() {
     const data = [
@@ -28,10 +29,10 @@ export default function ConversationMenu() {
         }
     ]
     return (
-        <View style={styles.mainContainer}>
+        <SafeAreaView style={styles.mainContainer}>
             <Text style={styles.title}>איך לדבר על זה?</Text>
             {data.map((item, index) => <MenuCardSimple key={index} title={item.title} imageSource={item.imageSource} audio={item.audio} />)}
-        </View>
+        </SafeAreaView>
     )
 }
 

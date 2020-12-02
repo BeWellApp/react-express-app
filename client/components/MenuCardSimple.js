@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import PlayButton from '../components/PlayButton';
 
-export default function MenuCardSimple({ title, imageSource, audio }) {
+export default function MenuCardSimple({ title, imageSource, audio, nextPage, navigation }) {
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>{title}</Text>
-            <PlayButton audio={audio} />
-            <Image resizeMode="contain" style={styles.image} source={imageSource} />
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate(nextPage)} style={styles.container}>
+                <Text style={styles.title}>{title}</Text>
+                <PlayButton audio={audio} />
+                <Image resizeMode="contain" style={styles.image} source={imageSource} />
+        </TouchableOpacity >
     )
 }
 
