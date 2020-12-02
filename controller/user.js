@@ -7,10 +7,10 @@ const addUser = (req, res) => {
     const body = req.body;
     const newUser = new User(body);
     newUser.save()
-        .then(user => { return res.status(201).send(user) })
+        .then(user => { return res.status(201).json(user) })
         .catch(err => {
             console.log(err);
-            return res.status(500).send("unable ro register")
+            return res.status(500).json("unable ro register")
         });
 }
 
@@ -19,9 +19,9 @@ const logIn = (req, res) => {
     const { deviceIMEI } = req.params;
     User.findOne({ deviceIMEI}, (err, user) => {
         if (user) {
-            if (user) return res.status(200).send(user);
+            if (user) return res.status(200).json(user);
         }
-        return res.status(500).send("user not found");
+        return res.status(500).json("user not found");
     });   
 }
 
